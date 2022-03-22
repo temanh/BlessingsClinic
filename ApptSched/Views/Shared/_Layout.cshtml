@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Welcome</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/fullcalendar@5.10.2/main.min.css,npm/fullcalendar@5.10.2/main.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.2.513/styles/kendo.default-v2.min.css" />
+    <link href="~/lib/select2/css/select2.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/home.css"/>
+    @await RenderSectionAsync("Head", required: false)
+</head>
+<style>
+    body {
+        min-height: 100vh; /*viewport height*/
+        width: 100%;
+        background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url("https://th.bing.com/th/id/R.45100a132e01de96eec03c74356aabbb?rik=bAJleW%2fm1LQJDw&riu=http%3a%2f%2facdn.architizer.com%2fthumbnails-PRODUCTION%2f76%2f60%2f7660a8a136209b1d804d8161cfba1611.jpg&ehk=%2f3ToK0qEQSZG0qI1E82MKL6M%2bdb15wnlvyBM2R1GokI%3d&risl=&pid=ImgRaw&r=0");
+        background-position: center;
+        background-size: cover;
+        position: relative;
+    }
+</style>
+<body>
+<header class="homePg">
+    <nav class="navbar navbar-inverse navbar-expand-sm box-shadow mb-3">
+        <div class="container">
+            <button class="navbar-toggler-icon border-white rounded-circle" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <partial name="_LoginPartial"/>
+                @*<partial views are VIEWS inside of view. (section of a page) Underscore denotes partial view >*@
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+<footer class="footer text-muted text-center">
+    <div class="container">
+        &copy; 2022 - Blessing Tree Clinic - <a asp-area="" asp-controller="Home" asp-action="Teman">Teman Harrison</a>
+    </div>
+</footer>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script type="text/javascript" src="~/lib/select2/js/select2.full.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/combine/npm/fullcalendar@5.10.2,npm/fullcalendar@5.10.2/locales-all.min.js,npm/fullcalendar@5.10.2/main.min.js"></script>
+<script src="https://kendo.cdn.telerik.com/2020.2.513/js/kendo.all.min.js"></script>
+<script type="text/javascript" src="~/js/notify.min.js"></script>
+<script src="~/js/script-custom-calendar.js"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

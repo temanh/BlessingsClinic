@@ -1,0 +1,82 @@
+﻿.homePg {
+    margin: 0;
+    padding: 0;
+}
+.homeBackground {
+    min-height: 100vh; /*viewport height*/
+    width: 100%;
+    background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url("https://th.bing.com/th/id/R.45100a132e01de96eec03c74356aabbb?rik=bAJleW%2fm1LQJDw&riu=http%3a%2f%2facdn.architizer.com%2fthumbnails-PRODUCTION%2f76%2f60%2f7660a8a136209b1d804d8161cfba1611.jpg&ehk=%2f3ToK0qEQSZG0qI1E82MKL6M%2bdb15wnlvyBM2R1GokI%3d&risl=&pid=ImgRaw&r=0");
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+.image {
+    width: 200px;
+    height: 200px;
+    opacity: 0.6;
+    position: absolute;
+    top:60px;
+    left: 1px;
+    border-radius: 50%;
+    border: 5px solid black;
+}
+.nav-link::after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: white;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+.nav-link:hover::after {
+    width: 100%
+}
+.text-box h1 {
+    font-size: 50pt;
+}
+.text-box {
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 4.5%;
+    text-align: center;
+    color: white;
+}
+.text-box p{
+    margin: 10px 0 40px;
+    font-size: 15pt;
+}
+.hero-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    border: 1px solid white; /*creates rectnagle border*/
+    padding: 12px 34px;
+    font-size: 13pt;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+}
+.hero-btn:hover {
+    border: 1px solid white;
+    background: white;
+    transition: 1s;
+}
+@media(max-width: 700px) {
+    .text-box h1 {
+        font-size: 20pt;
+    }
+    .text-box p {
+        font-size: 10pt;
+    }
+    .image {
+        width: 150px;
+        height: 150px;
+    }
+    .text-box {
+        top: 40%;
+        left: 4.5%;
+    }
+}
+

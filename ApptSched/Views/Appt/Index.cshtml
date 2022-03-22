@@ -1,0 +1,51 @@
+﻿@using ApptSched.Utilities
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor httpContextAccessor
+
+<div class="row">
+    @if (TempData.ContainsKey("newAdminSignUp"))
+    {
+        //bootstrap alert functionality with TempData
+        <div class="container">
+            <div class="alert alert-success alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
+                <strong>Account created for @TempData["newAdminSignUp"].ToString()</strong>
+            </div>
+        </div>
+    }
+<div class="container">
+    @if (User.IsInRole(Helper.Admin))
+    {
+        <div class="row">
+            <div class="form-group col-3" id="divDoctorList">
+                <label>Select Doctor</label>
+                @Html.DropDownList("doctorId",
+                    new SelectList(ViewBag.DoctorList, "Id", "Name"), new { @class = "form-control select2", @onchange = "onDoctorChange();" })
+            </div>
+            <div class="offset-md-2 text-center">
+                <label class="font-weight-bold text-danger">Pending Doctor Approval</label><br>
+                <label class="font-weight-bold text-success ">Doctor Approved</label>
+            </div>
+            <div class="col-2 offset-10">
+                <a asp-controller="Account" asp-action="Register" class="btn btn-outline-primary form-control">Register Admin</a>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="offset-md-4">
+            <text class="font-weight-bold text-danger text-center">Pending Doctor Approval</text>
+            <text class="font-weight-bold text-success">Doctor Approved</text>
+        </div>
+    }
+    <div id="calendar"></div>
+</div>
+</div>
+
+<partial name="_AddEditAppt"/>
+<div class="text-right pt-2">
+     @if (User.IsInRole(Helper.Doctor))
+     {
+         <p>Welcome back Doctor, please review appointments pending appointments.</p>
+     }
+</div>

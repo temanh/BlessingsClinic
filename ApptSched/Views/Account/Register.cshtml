@@ -1,0 +1,78 @@
+﻿@using ApptSched.Utilities
+@model ApptSched.Models.ViewModels.RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+<link rel="stylesheet" href="css/home.css"/>
+
+@if (User.IsInRole(Helper.Admin))
+{
+    
+    <h2 class="text-white font-weight-bold">Administrative Account Creation</h2>
+}
+else
+{
+    <h2 class="text-white font-weight-bold">Register</h2>
+}
+<form method="post" asp-action="Register" asp-controller="Account">
+
+    @if (User.IsInRole(Helper.Admin))
+    {
+        <h4 class="text-white font-weight-bold">Please provide details of user with administrative privileges</h4>
+    }
+    else
+    {
+        <h4 class="text-white font-weight-bold">Create a New Account!</h4>
+    }
+    <hr />
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group row">
+        <label class="col-md-2 text-white font-weight-bold" asp-for="Name"></label>
+        <div class="col-md-10">
+            <input asp-for="Name" class="form-control" placeholder="Enter First & Last Name" />
+            <span asp-validation-for="Name" class="text-danger"></span> @*<validation/ individual line, marked out global>*@
+        </div>
+    </div>
+    <div class="form-group row text-white font-weight-bold">
+        <label class="col-md-2 " asp-for="Email"></label>
+        <div class="col-md-10">
+            <input asp-for="Email" class="form-control" placeholder="Enter Email Address" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row text-white font-weight-bold ">
+        <label class="col-md-2" asp-for="Password"></label>
+        <div class="col-md-10">
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row text-white font-weight-bold">
+        <label class="col-md-2" asp-for="ConfirmPassword"></label>
+        <div class="col-md-10">
+            <input asp-for="ConfirmPassword" class="form-control" />
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row text-white font-weight-bold">
+        <label class="col-md-2" asp-for="RoleName"></label>
+        <div class="col-md-10">
+            <select asp-for="RoleName"
+                    asp-items="@ApptSched.Utilities.Helper.GetRolesForDropDown(User.IsInRole(Helper.Admin))" class="form-control"></select>
+            <span asp-validation-for="RoleName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-10 offset-md-2">
+            <input type="submit" value="Register" class="btn btn-success" />
+        </div>
+    </div>
+    <p class="col-md-10 offset-md-2">
+        <a asp-action="Login">Sign In</a>
+    </p>
+   
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" /> @*<client-side validation>*@
+}
